@@ -1,0 +1,9 @@
+# Day 2 – Data types and input
+
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+height = float(input("Enter your height in cm: "))
+
+print("Name:", name)
+print("Age next year:", age + 1)
+print("Height in meters:", height / 100)
