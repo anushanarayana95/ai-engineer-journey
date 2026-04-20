@@ -1,0 +1,10 @@
+
+# Day 1 Python Practice
+
+name = "Anusha"
+age = 28
+city = "Chennai"
+
+print("My name is", name)
+print("I am", age, "years old")
+print("I live in", city)
