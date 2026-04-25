@@ -6,3 +6,13 @@
 
 ## Practice
 Simulated cleaning messy CSV-style data.
+
+
+# – List of Dictionaries
+
+## Learned
+- Structured data storage
+- Combining lists and dictionaries
+
+## Practice
+Stored employee data in list of dictionaries.
