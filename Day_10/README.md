@@ -14,3 +14,14 @@ Outcome
 
 I can now generate output files (reports) using Python.
 
+Exception Handling in Python
+What I Learned
+
+How to handle errors using try and except blocks.
+
+What I Practiced
+Took user input
+Prevented program crash using exception handling
+Outcome
+
+I can now write safer Python programs that handle user mistakes.
