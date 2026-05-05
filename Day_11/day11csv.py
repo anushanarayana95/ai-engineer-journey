@@ -9,6 +9,7 @@ print("file generated")
 import csv
 
 with open("Day_11/employees.csv", "r") as file:
+    
     reader = csv.DictReader(file)
 
     for row in reader:
