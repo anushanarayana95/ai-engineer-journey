@@ -9,3 +9,4 @@ __pycache__/
 news.db
 data/
 *.db
+data/survey_results_public.csv
