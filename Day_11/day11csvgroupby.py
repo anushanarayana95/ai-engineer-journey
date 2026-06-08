@@ -17,3 +17,4 @@ print("Employee count by city:\n")
 
 for city, count in city_count.items():
     print(city, ":", count)
+    

@@ -8,7 +8,7 @@ Created a list of cities
 Removed duplicates using set
 Wrote the cleaned data into a text file as a report
 Files
-day14_file_write.py
+day10_file_write.py
 report.txt
 Outcome
 
