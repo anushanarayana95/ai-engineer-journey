@@ -463,3 +463,306 @@ Set:
 * Reusability
 * Cleaner code
 * Easier maintenance
+
+
+# APIs & Requests Cheat Sheet
+
+## Import Requests
+
+```python
+import requests
+```
+
+### Explanation
+
+Imports the Requests library, which allows Python to communicate with websites and APIs.
+
+Think:
+
+```text
+Python
+ ↓
+Internet
+ ↓
+API
+ ↓
+Response
+```
+
+---
+
+## Send GET Request
+
+```python
+response = requests.get(url)
+```
+
+### Explanation
+
+Sends a request to a URL and asks for data.
+
+Example:
+
+```python
+response = requests.get(
+    "https://api.open-meteo.com/v1/forecast"
+)
+```
+
+The API returns weather information.
+
+---
+
+## Add Timeout
+
+```python
+response = requests.get(url, timeout=10)
+```
+
+### Explanation
+
+Stops waiting after 10 seconds.
+
+Prevents programs from hanging forever if the server is slow.
+
+---
+
+## Check Status Code
+
+```python
+response.status_code
+```
+
+### Explanation
+
+Shows whether the request succeeded.
+
+Common values:
+
+```text
+200 → Success
+404 → Not Found
+403 → Forbidden
+500 → Server Error
+```
+
+Example:
+
+```python
+print(response.status_code)
+```
+
+Output:
+
+```text
+200
+```
+
+---
+
+## Convert Response to JSON
+
+```python
+data = response.json()
+```
+
+### Explanation
+
+Converts API data into a Python dictionary.
+
+API Response:
+
+```json
+{
+  "temperature": 35
+}
+```
+
+Python Dictionary:
+
+```python
+{
+    "temperature": 35
+}
+```
+
+---
+
+## Access Dictionary Values
+
+```python
+data["temperature"]
+```
+
+### Explanation
+
+Gets a value using its key.
+
+Example:
+
+```python
+temp = data["temperature"]
+```
+
+Output:
+
+```text
+35
+```
+
+---
+
+## Access Nested Dictionary Values
+
+```python
+data["current"]["temperature_2m"]
+```
+
+### Explanation
+
+JSON often contains dictionaries inside dictionaries.
+
+Example:
+
+```python
+{
+    "current": {
+        "temperature_2m": 37.9
+    }
+}
+```
+
+Access:
+
+```python
+data["current"]["temperature_2m"]
+```
+
+Output:
+
+```text
+37.9
+```
+
+---
+
+## Store Values in Variables
+
+```python
+temperature = data["current"]["temperature_2m"]
+humidity = data["current"]["relative_humidity_2m"]
+wind_speed = data["current"]["wind_speed_10m"]
+```
+
+### Explanation
+
+Makes code easier to read and reuse.
+
+Instead of:
+
+```python
+print(data["current"]["temperature_2m"])
+```
+
+Use:
+
+```python
+print(temperature)
+```
+
+---
+
+## Try / Except
+
+```python
+try:
+    response = requests.get(url)
+
+except Exception as e:
+    print("Error:", e)
+```
+
+### Explanation
+
+Prevents the program from crashing.
+
+Useful when:
+
+```text
+Internet is down
+API is unavailable
+Wrong URL is used
+Timeout occurs
+```
+
+---
+
+## Write to a File
+
+```python
+with open("report.md", "w") as f:
+    f.write(report)
+```
+
+### Explanation
+
+Creates a file and saves text into it.
+
+Example:
+
+```python
+report = "Temperature: 37.9 °C"
+```
+
+Result:
+
+```text
+report.md
+```
+
+contains:
+
+```text
+Temperature: 37.9 °C
+```
+
+---
+
+## Complete API Workflow
+
+```python
+import requests
+
+response = requests.get(url)
+
+data = response.json()
+
+temperature = data["current"]["temperature_2m"]
+
+print(temperature)
+```
+
+### Explanation
+
+Step-by-step:
+
+```text
+Send Request
+      ↓
+Receive Response
+      ↓
+Convert JSON
+      ↓
+Extract Data
+      ↓
+Display Results
+```
+
+This workflow is used in:
+
+* Weather Apps
+* News Apps
+* ChatGPT Applications
+* AI Agents
+* RAG Systems
+* OpenAI API Projects
