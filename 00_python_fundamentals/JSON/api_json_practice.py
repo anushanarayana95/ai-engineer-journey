@@ -88,3 +88,4 @@ print(df["company"].sort_values())
 df.to_csv("/workspaces/ai-engineer-journey/00_python_fundamentals/JSON/users_api_data.csv", index=False)
 
 print("File saved successfully")
+print(df.head())
