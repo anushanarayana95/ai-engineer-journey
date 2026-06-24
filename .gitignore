@@ -3,7 +3,10 @@
 .ipynb_checkpoints/
 Untitled.ipynbq
 Untitled1.ipynb
-
+.env
+venv/
+__pycache__/
+news.db
 data/
 data/
 data/

@@ -2,8 +2,15 @@ import sqlite3
 import requests
 from fastapi import FastAPI
 from pydantic import BaseModel
+from google import genai
+from dotenv import load_dotenv
+import os
 
-app = FastAPI()
+load_dotenv()
+
+client = genai.Client(
+    api_key=os.getenv("GEMINI_API_KEY")
+)
 
 DB_NAME = "news.db"
 
@@ -320,23 +327,27 @@ def sync_news():
     )
 
     exists = cursor.fetchone()["total"]
-
+    
     if exists == 0:
+     print("TITLE:", article.get("title"))
+     print("DESCRIPTION:", article.get("description"))
+     print("CONTENT:", article.get("content"))
+     print("=" * 50)
+     cursor.execute("""
+INSERT INTO news
+(title, source, published, content)
+VALUES (?, ?, ?, ?)
+""", (
+    article["title"],
+    article["source"]["name"],
+    article["publishedAt"],
+    article.get("content") or article.get("description") or ""
+))
 
-        cursor.execute("""
-            INSERT INTO news
-            (title, source, published)
-            VALUES (?, ?, ?)
-        """, (
-            article["title"],
-            article["source"]["name"],
-            article["publishedAt"]
-        ))
+    inserted += 1
 
-        inserted += 1
-
-    else:
-        skipped += 1
+ else:
+       skipped += 1
         
 
  conn.commit()
@@ -348,3 +359,171 @@ def sync_news():
     "skipped": skipped
 }
 
+@app.post("/summarize-news/{title}")
+def summarize_news(title: str):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM news WHERE title = ?",
+        (title,)
+    )
+
+    article = cursor.fetchone()
+
+    if not article:
+        conn.close()
+        return {"error": "Article not found"}
+        print("CONTENT:")
+        print(article["content"])
+    prompt = f"""
+Summarize this news article in 3-5 sentences.
+
+Title:
+{article['title']}
+
+Source:
+{article['source']}
+
+Content:
+{article['content']}
+
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
+
+    summary = response.text
+    cursor.execute("""
+        UPDATE news
+        SET summary = ?
+        WHERE title = ?
+    """, (
+        summary,
+        title
+    ))
+
+    conn.commit()
+    conn.close()
+
+    return {
+        "title": title,
+        "summary": summary
+    }
+
+# delete news
+@app.delete("/news/all")
+def delete_all_news():
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM news")
+
+    conn.commit()
+    conn.close()
+
+    return {"message": "All news deleted"}
+#news check
+@app.get("/news/check-latest")
+def check_latest():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT title, content
+    FROM news
+    ORDER BY published DESC
+    LIMIT 5
+    """)
+
+    rows = cursor.fetchall()
+
+
+    conn.close()
+
+    return [dict(row) for row in rows]
+
+#new analyze
+@app.post("/analyze-news/{title}")
+def analyze_news(title: str):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute(
+        "SELECT * FROM news WHERE title = ?",
+        (title,)
+    )
+
+    article = cursor.fetchone()
+
+    if not article:
+        conn.close()
+        return {"error": "Article not found"}
+
+    content = article["content"]
+
+    prompt_text = f"""
+Analyze the following news article.
+
+Title:
+{article['title']}
+
+Content:
+{content}
+
+Return exactly in this format:
+
+SUMMARY:
+<2-3 sentence summary>
+
+CATEGORY:
+<one category>
+
+KEYWORDS:
+<comma separated keywords>
+"""
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt_text
+    )
+
+    result = response.text
+
+    print(result)
+
+    summary = result.split("CATEGORY:")[0]
+    summary = summary.replace("SUMMARY:", "").strip()
+
+    category = result.split("CATEGORY:")[1]
+    category = category.split("KEYWORDS:")[0].strip()
+
+    keywords = result.split("KEYWORDS:")[1].strip()
+
+    cursor.execute("""
+        UPDATE news
+        SET summary = ?,
+            category = ?,
+            keywords = ?
+        WHERE title = ?
+    """, (
+        summary,
+        category,
+        keywords,
+        title
+    ))
+
+    conn.commit()
+    conn.close()
+
+    return {
+        "title": title,
+        "summary": summary,
+        "category": category,
+        "keywords": keywords
+    }
