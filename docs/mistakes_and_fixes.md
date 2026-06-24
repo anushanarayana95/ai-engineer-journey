@@ -234,7 +234,7 @@ Join differences appear only when data differs.
 
 ---
 
-# SQL
+# SQL---------------------------------
 
 ## Problem
 
@@ -289,6 +289,41 @@ PRAGMA table_info(employees);
 Verify column names first.
 
 ---
+# SQLite Mistakes
+
+## Mistake 1
+
+no such column: summary
+
+Cause:
+
+Database schema not updated
+
+Fix:
+
+ALTER TABLE news
+ADD COLUMN summary TEXT
+
+---
+
+## Mistake 2
+
+Using non-existent fields
+
+Error:
+
+IndexError
+
+Cause:
+
+Field not present in database
+
+Fix:
+
+Check schema using:
+
+PRAGMA table_info(news);
+
 
 # Git & GitHub
 
@@ -470,3 +505,84 @@ If I solve a problem once:
 Add it here.
 
 Future me should never waste time solving the same problem twice.
+
+
+# gemini api
+
+# Gemini Integration Mistakes
+
+## Mistake 1
+
+Hardcoded API Key
+
+Bad:
+
+client = genai.Client(api_key="AQ...")
+
+Good:
+
+client = genai.Client(
+api_key=os.getenv("GEMINI_API_KEY")
+)
+
+---
+
+## Mistake 2
+
+Committed API Key to GitHub
+
+Result:
+
+* Push Protection blocked push
+
+Fix:
+
+* Remove secret
+* Create new key
+* Use .env
+
+---
+
+## Mistake 3
+
+Empty .env File
+
+Problem:
+
+API KEY: None
+
+Cause:
+
+.env file had 0 bytes
+
+Fix:
+
+GEMINI_API_KEY=your_key
+
+---
+
+## Mistake 4
+
+Quota Exceeded
+
+Error:
+
+429 RESOURCE_EXHAUSTED
+
+Cause:
+
+Free tier limits reached
+
+---
+
+## Mistake 5
+
+Model Unavailable
+
+Error:
+
+503 UNAVAILABLE
+
+Cause:
+
+Google servers under high load
