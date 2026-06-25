@@ -1,45 +1,48 @@
-# AI News Intelligence Platform
+# 📰 News Intelligence Platform
 
-An AI-powered News Analysis API built with FastAPI, SQLite, NewsAPI, and Gemini.
+An AI-powered news analytics platform built using FastAPI, SQLite, Gemini AI, and Streamlit.
 
 ## Features
 
-* Store news articles in SQLite
-* Fetch latest news
-* Filter by source
-* Count articles
-* AI-powered summarization
-* Category classification
-* Keyword extraction
-* REST API architecture
+* Search News Articles
+* Latest News Feed
+* News Source Analytics
+* AI-Powered Article Analysis
+* Source Distribution Charts
+* Interactive Dashboard
 
 ## Tech Stack
 
 * Python
 * FastAPI
 * SQLite
-* NewsAPI
+* Streamlit
+* Pandas
 * Gemini AI
-* Git & GitHub
+* NewsAPI
 
-## Sample Endpoints
+## Dashboard
 
-GET /news
+![Dashboard](screenshots/dashboard_home.png)
 
-GET /news/latest
+## Search Feature
 
-GET /news/count
+![Search](screenshots/search_news.png)
 
-POST /analyze-news/{title}
+## AI Analysis
 
-## Project Goals
+![AI Analysis](screenshots/ai_analysis.png)
 
-This project demonstrates backend development, API integration, database operations, and Generative AI integration.
+## Analytics Chart
 
-## Upcoming Features
+![Analytics](screenshots/source_barchart.png)
 
-* Analytics Endpoint
-* Search Endpoint
-* Streamlit Dashboard
-* RAG News Chatbot
-* Deployment
+## What I Learned
+
+* REST API Development
+* Database Design
+* AI Integration
+* Dashboard Development
+* Data Visualization
+* Prompt Engineering
+* API Testing
