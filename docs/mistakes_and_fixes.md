@@ -586,3 +586,64 @@ Error:
 Cause:
 
 Google servers under high load
+
+
+# ----------Analytics-----------
+
+# Analytics Endpoint Mistakes
+
+## Problem
+
+Analytics returned:
+
+(None, 20)
+
+## Cause
+
+Category column existed but all values were NULL.
+
+## Learning
+
+Analytics is only useful when data enrichment is completed.
+
+Always inspect database contents before building reports.
+
+
+# Search API Learnings
+
+## Learning
+
+Search should happen in the database, not in Python.
+
+Bad:
+Fetch all rows then filter.
+
+Good:
+Use SQL WHERE clause.
+
+Benefits:
+
+* Faster
+* Scalable
+* Less memory usage
+
+
+# Streamlit API Connection Mistakes
+
+1. FastAPI server must be running before Streamlit calls APIs.
+
+Error:
+ConnectionError
+
+Fix:
+Run uvicorn api:app --reload
+
+2. Variable must be defined before use.
+
+Error:
+NameError: search_response not defined
+
+Fix:
+Create search_response before calling .json()
+
+3. Check API endpoint in Swagger before connecting Streamlit.

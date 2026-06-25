@@ -431,3 +431,26 @@ DELETE:
 DROP:
 
 * Removes entire table
+
+# SQL Analytics Cheat Sheet
+
+## Count Rows
+
+SELECT COUNT(*) FROM news;
+
+## Count By Source
+
+SELECT source, COUNT(*)
+FROM news
+GROUP BY source;
+
+## Sort Largest First
+
+SELECT source, COUNT(*)
+FROM news
+GROUP BY source
+ORDER BY COUNT(*) DESC;
+
+## Why Use It?
+
+Used for analytics dashboards and reporting APIs.
