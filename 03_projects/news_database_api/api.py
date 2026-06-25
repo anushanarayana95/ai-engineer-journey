@@ -559,3 +559,43 @@ def analytics():
         "total_articles": total_articles,
         "sources": source_counts
     }
+#-search--------------
+
+@app.get("/search/{keyword}")
+def search_news(keyword: str):
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM news
+        WHERE title LIKE ?
+    """, (f"%{keyword}%",))
+
+    results = cursor.fetchall()
+
+    conn.close()
+
+    return results
+
+#latest news-----------------------
+
+@app.get("/latest")
+def latest_news():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM news
+        ORDER BY published DESC
+        LIMIT 10
+    """)
+
+    articles = cursor.fetchall()
+
+    conn.close()
+
+    return [dict(article) for article in articles]
