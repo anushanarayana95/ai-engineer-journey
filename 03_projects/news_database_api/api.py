@@ -1,6 +1,7 @@
 import sqlite3
 import requests
 from fastapi import FastAPI
+app = FastAPI()
 from pydantic import BaseModel
 from google import genai
 from dotenv import load_dotenv
@@ -526,4 +527,35 @@ KEYWORDS:
         "summary": summary,
         "category": category,
         "keywords": keywords
+    }
+@app.get("/analytics")
+def analytics():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT COUNT(*)
+    FROM news
+    """)
+
+    total_articles = cursor.fetchone()[0]
+
+    cursor.execute("""
+    SELECT source, COUNT(*)
+    FROM news
+    GROUP BY source
+    ORDER BY COUNT(*) DESC
+    """)
+
+    source_counts = {}
+
+    for source, count in cursor.fetchall():
+        source_counts[source] = count
+
+    conn.close()
+
+    return {
+        "total_articles": total_articles,
+        "sources": source_counts
     }
