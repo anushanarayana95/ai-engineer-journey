@@ -454,28 +454,3 @@ ORDER BY COUNT(*) DESC;
 ## Why Use It?
 
 Used for analytics dashboards and reporting APIs.
-#------------------------
-# ORDER BY and LIMIT
-
-## Sort Latest First
-
-SELECT *
-FROM news
-ORDER BY published DESC;
-
-## First 10 Rows
-
-SELECT *
-FROM news
-LIMIT 10;
-
-## Combined
-
-SELECT *
-FROM news
-ORDER BY published DESC
-LIMIT 10;
-
-## Usage
-
-Used for latest articles, recent users, recent transactions and dashboard views.

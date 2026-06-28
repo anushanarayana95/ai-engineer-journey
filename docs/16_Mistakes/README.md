@@ -647,3 +647,169 @@ Fix:
 Create search_response before calling .json()
 
 3. Check API endpoint in Swagger before connecting Streamlit.
+
+# Mistake 18: Connection Refused Error (FastAPI Not Running)
+
+## Problem
+
+```
+ConnectionError:
+Failed to establish a new connection
+WinError 10061
+Connection refused
+```
+
+## Cause
+
+Streamlit tried to send an HTTP request to:
+
+```
+http://127.0.0.1:8000
+```
+
+but the FastAPI (Uvicorn) server was not running.
+
+No process was listening on port 8000.
+
+## Wrong Thinking
+
+I initially thought FastAPI itself generated the error.
+
+Actually, the request never reached FastAPI.
+
+The operating system refused the connection because nothing was listening on port 8000.
+
+## Fix
+
+Start FastAPI first.
+
+```bash
+uvicorn api:app --reload
+```
+
+Then run:
+
+```bash
+streamlit run dashboard.py
+```
+
+## Concept Learned
+
+Request Flow:
+
+Streamlit
+
+↓
+
+requests.get()
+
+↓
+
+127.0.0.1:8000
+
+↓
+
+Operating System checks for server
+
+↓
+
+If no server exists
+
+↓
+
+Connection Refused
+
+↓
+
+requests raises ConnectionError
+
+## Interview Note
+
+A Connection Refused error is a networking problem, not an application (FastAPI) problem.
+# Mistake 19: HTTP Response vs JSON
+
+## Mistake
+
+I thought:
+
+```
+requests.get()
+
+↓
+
+JSON
+```
+
+## Correct Flow
+
+```
+requests.get()
+
+↓
+
+HTTP Response Object
+
+↓
+
+response.json()
+
+↓
+
+Python Dictionary
+```
+
+## Lesson
+
+`requests.get()` returns an HTTP Response object.
+
+The JSON is extracted only when calling:
+
+```python
+response.json()
+```
+
+## Interview Note
+
+Always distinguish between an HTTP Response object and the JSON body it contains.
+# Mistake 20: One-to-Many vs Many-to-Many
+
+## Mistake
+
+I thought:
+
+One User
+
+↓
+
+Many Articles
+
+therefore the relationship is One-to-Many.
+
+## Why It Was Wrong
+
+I only looked at one side.
+
+I forgot to ask:
+
+Can one article belong to many users?
+
+Yes.
+
+Therefore:
+
+Users ↔ Articles
+
+is a Many-to-Many relationship.
+
+## Correct Database Design
+
+Use a bridge table:
+
+Bookmarks
+
+* user_id
+* article_id
+
+## Interview Note
+
+Always analyse relationships from both directions before deciding the relationship type.

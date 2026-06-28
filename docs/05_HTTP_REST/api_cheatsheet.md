@@ -309,30 +309,3 @@ Saves DataFrame as a CSV file.
 `index=False` removes row numbers from the file.
 
 
-# Search API Cheat Sheet
-
-## SQL LIKE
-
-SELECT * FROM news
-WHERE title LIKE '%AI%';
-
-## Wildcards
-
-%AI%
-= contains AI anywhere
-
-AI%
-= starts with AI
-
-%AI
-= ends with AI
-
-## FastAPI Path Parameter
-
-@app.get("/search/{keyword}")
-
-keyword becomes dynamic user input.
-
-## Use Case
-
-Search articles without loading the entire database.
