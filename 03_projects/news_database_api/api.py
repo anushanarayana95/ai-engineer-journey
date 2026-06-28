@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from google import genai
 from dotenv import load_dotenv
 import os
-
+from google.genai.errors import ServerError
 load_dotenv()
 
 client = genai.Client(
@@ -488,11 +488,18 @@ CATEGORY:
 KEYWORDS:
 <comma separated keywords>
 """
+    
 
-    response = client.models.generate_content(
+    try:
+    
+     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=prompt_text
     )
+    except ServerError:
+     return {
+        "error": "Gemini API is temporarily busy. Please try again in a few minutes."
+    }
 
     result = response.text
 
