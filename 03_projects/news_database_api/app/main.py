@@ -13,7 +13,10 @@ client = genai.Client(
     api_key=os.getenv("GEMINI_API_KEY")
 )
 
-DB_NAME = "news.db"
+from app.database import get_connection
+
+# -----------------------------
+from app.schemas import NewsItem
 
 # -----------------------------
 
@@ -21,21 +24,13 @@ DB_NAME = "news.db"
 
 # -----------------------------
 
-def get_connection():
- conn = sqlite3.connect(DB_NAME)
- conn.row_factory = sqlite3.Row
- return conn
+
 
 # -----------------------------
 
 # Pydantic Model
 
 # -----------------------------
-
-class NewsItem(BaseModel):
- title: str
- source: str
- published: str
 
 # -----------------------------
 
@@ -296,7 +291,7 @@ def delete_fake_news():
 
 # -----------------------------
 
-API_KEY = "8b390caa5b8341729ba9e2b87e82b1c9"
+API_KEY = os.getenv("NEWS_API_KEY")
 
 @app.get("/sync-news")
 def sync_news():
