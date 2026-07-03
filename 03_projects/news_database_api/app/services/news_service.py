@@ -1,7 +1,7 @@
 from app.database import get_connection
 import os
 import requests
-
+from app.utils.helpers import rows_to_news
 
 def get_all_news():
 
@@ -11,21 +11,12 @@ def get_all_news():
     cursor.execute("SELECT * FROM news")
     rows = cursor.fetchall()
 
-    news = []
-
-    for row in rows:
-        news.append({
-            "title": row["title"],
-            "source": row["source"],
-            "published": row["published"]
-        })
-
-    conn.close()
+    news = rows_to_news(rows)
 
     return {
-        "total": len(news),
-        "news": news
-    }
+    "total": len(news),
+    "news": news
+}
 
 
 def count_news():
@@ -67,19 +58,10 @@ def latest_news():
 
  rows = cursor.fetchall()
 
- news = []
-
- for row in rows:
-    news.append({
-        "title": row["title"],
-        "source": row["source"],
-        "published": row["published"]
-    })
-
- conn.close()
+ news = rows_to_news(rows)
 
  return {
-    "count": len(news),
+    "total": len(news),
     "news": news
 }
 
@@ -101,26 +83,14 @@ def news_by_source(source_name: str):
     "SELECT * FROM news WHERE source = ?",
     (source_name,)
 )
-
  rows = cursor.fetchall()
 
- news = []
-
- for row in rows:
-    news.append({
-        "title": row["title"],
-        "source": row["source"],
-        "published": row["published"]
-    })
-
- conn.close()
+ news = rows_to_news(rows)
 
  return {
-    "source": source_name,
-    "count": len(news),
+    "total": len(news),
     "news": news
 }
-
 
 # -----------------------------
 
