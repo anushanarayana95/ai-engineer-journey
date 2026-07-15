@@ -1,11 +1,15 @@
 from fastapi import APIRouter
-from app.services import search_service
+import app.services.search_service as search_service
+from app.schemas import SearchRequest
 
 router = APIRouter(
     prefix="/search",
     tags=["Search"]
 )
 
-@router.get("/{keyword}")
-def search(keyword: str):
-    return search_service.search_news(keyword)
+@router.post("")
+def search_news(item: SearchRequest):
+    return search_service.search_news(
+        item.keyword,
+        item.source,
+        item.date)

@@ -1,6 +1,6 @@
 from fastapi import APIRouter, status
 import app.services.news_service as news_service
-
+from fastapi import APIRouter, status, Query
 from app.schemas import (
     NewsItem,
     NewsResponse,
@@ -16,10 +16,21 @@ router = APIRouter(
 # Get All News
 # -----------------------------
 
-@router.get("", response_model=NewsResponse)
-def get_news():
-    return news_service.get_all_news()
-
+@router.get("")
+def get_news(
+    page: int = Query(1, ge=1),
+    limit: int = Query(10, ge=1, le=100),
+    source: str | None = None,
+    sort_by: str = "published",
+    order: str = "DESC"
+):
+    return news_service.get_all_news(
+        page,
+        limit,
+        source,
+        sort_by,
+        order
+    )
 # -----------------------------
 # Count News
 # -----------------------------
@@ -87,3 +98,7 @@ def remove_news(title: str):
 @router.get("/test")
 def test_news():
     return news_service.test()
+
+@router.get("/filter")
+def filter_news(start_date: str, end_date: str):
+    return news_service.filter_news(start_date, end_date)
