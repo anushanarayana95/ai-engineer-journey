@@ -650,3 +650,290 @@ Required for time-series analysis.
 
 To aggregate data by day, week, month, or year.
 #
+# Pandas Cheatsheet
+
+## Import Pandas
+
+```python
+import pandas as pd
+```
+
+Loads the Pandas library.
+
+---
+
+## Read CSV
+
+```python
+df = pd.read_csv("employees.csv")
+```
+
+Loads CSV data into a DataFrame.
+
+---
+
+## View First Rows
+
+```python
+df.head()
+```
+
+Shows first 5 rows.
+
+---
+
+## View Last Rows
+
+```python
+df.tail()
+```
+
+Shows last 5 rows.
+
+---
+
+## Dataset Information
+
+```python
+df.info()
+```
+
+Shows:
+
+* Column names
+* Data types
+* Missing values
+
+---
+
+## Dataset Shape
+
+```python
+df.shape
+```
+
+Returns:
+
+```text
+(rows, columns)
+```
+
+Example:
+
+```text
+(100, 5)
+```
+
+---
+
+## Column Names
+
+```python
+df.columns
+```
+
+Returns all column names.
+
+---
+
+## Select One Column
+
+```python
+df["salary"]
+```
+
+Returns one column.
+
+---
+
+## Select Multiple Columns
+
+```python
+df[["name", "salary"]]
+```
+
+Returns selected columns.
+
+---
+
+## Summary Statistics
+
+```python
+df.describe()
+```
+
+Shows:
+
+```text
+count
+mean
+std
+min
+max
+```
+
+for numeric columns.
+
+---
+
+## Missing Values
+
+```python
+df.isnull().sum()
+```
+
+Counts missing values.
+
+---
+
+## Remove Missing Values
+
+```python
+df.dropna()
+```
+
+Removes rows with null values.
+
+---
+
+## Fill Missing Values
+
+```python
+df.fillna("Unknown")
+```
+
+Replaces missing values.
+
+---
+
+## Rename Columns
+
+```python
+df.rename(columns={"salary":"Salary"})
+```
+
+Changes column names.
+
+---
+
+## Sort Values
+
+```python
+df.sort_values("salary")
+```
+
+Ascending order.
+
+```python
+df.sort_values("salary", ascending=False)
+```
+
+Descending order.
+
+---
+
+## Filter Rows
+
+```python
+df[df["salary"] > 50000]
+```
+
+Returns matching rows.
+
+---
+
+## Group By
+
+```python
+df.groupby("city")["salary"].mean()
+```
+
+Average salary by city.
+
+---
+
+## Count Values
+
+```python
+df["city"].value_counts()
+```
+
+Counts frequency of each city.
+
+---
+
+## Unique Values
+
+```python
+df["city"].nunique()
+```
+
+Counts unique cities.
+
+---
+
+## Highest Salary
+
+```python
+df["salary"].max()
+```
+
+Returns highest salary.
+
+---
+
+## Lowest Salary
+
+```python
+df["salary"].min()
+```
+
+Returns lowest salary.
+
+---
+
+## Average Salary
+
+```python
+df["salary"].mean()
+```
+
+Returns average salary.
+
+---
+
+## Top 3 Records
+
+```python
+df.nlargest(3, "salary")
+```
+
+Returns top 3 salaries.
+
+---
+
+## Save CSV
+
+```python
+df.to_csv("output.csv", index=False)
+```
+
+Exports data.
+
+---
+
+# Analysis Workflow
+
+```text
+Load Data
+    ↓
+Inspect Data
+    ↓
+Clean Data
+    ↓
+Analyze Data
+    ↓
+Visualize Data
+    ↓
+Export Results
+```
