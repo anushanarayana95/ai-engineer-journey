@@ -1,90 +1,47 @@
-# 🚀 AI Engineering Journey Portfolio
+# Hi, I'm Anusha 👋
 
-Welcome to my learning and project repository.
-This repo documents my journey from Python basics → Data Analysis → SQL → AI Engineering.
+I believe in **learning by building and documenting my journey in public.**
 
----
+I am currently developing practical skills in **Data Analytics and AI Engineering**, with a focus on turning data into useful insights and building real-world applications.
 
-## 👨‍💻 About Me
+### 📊 Data Analytics
 
-I am currently building my skills in:
+* Python
+* Pandas
+* SQL
+* Excel
+* Data Cleaning
+* Data Analysis
+* Data Visualization
+* Power BI
 
-* Python programming
-* Data Analysis (Pandas)
-* SQL databases
-* AI Engineering fundamentals
+### 🤖 AI & Backend
 
-My goal is to become an **AI Engineer** by building real-world AI applications.
+* Python
+* FastAPI
+* REST APIs
+* SQLite
+* AI APIs
+* Generative AI fundamentals
 
----
+### 🛠️ What I'm Building
 
-## 📚 Learning Structure
+I learn through hands-on projects involving:
 
-### 🐍 Python Fundamentals
+**Data → Cleaning → Analysis → Visualization → Insights**
 
-Folder: `00_python_fundamentals/`
+and
 
-* Variables, loops, functions
-* File handling
-* OOP basics
+**Python → APIs → Databases → AI Applications**
 
----
+My projects and learning progress are documented here as I continue building my skills.
 
-### 📊 Data Analysis (Pandas)
+### 🎯 Career Goal
 
-Folder: `01_pandas_data_analysis/`
+I am currently focused on starting my career as a **Data Analyst**, while continuing to develop toward **AI Engineering**.
 
-* Data cleaning
-* Filtering & transformation
-* GroupBy & aggregation
-* Real dataset practice
+I am particularly interested in opportunities where I can work with data, Python, SQL, analytics, automation, and eventually AI-powered applications.
 
----
+📌 **GitHub:** Building in public and continuously improving
+📌 **LinkedIn:** Connecting with people in data analytics, technology, and AI
 
-### 🗄️ SQL Basics
-
-Folder: `02_sql_basics/`
-
-* SELECT, INSERT, UPDATE, DELETE
-* GROUP BY, ORDER BY
-* Basic analytics queries
-
----
-
-### 📁 Projects
-
-Folder: `03_projects/`
-
-* Practice-based mini projects
-* Data exploration exercises
-
----
-
-### 🤖 AI Engineering (Upcoming)
-
-Folder: `04_ai_engineering/`
-
-* FastAPI basics
-* LLM API integration
-* Chatbot development
-* AI-powered applications
-
----
-
-## 🚀 Current Focus
-
-* Strengthening Python + SQL fundamentals
-* Building real-world data projects
-* Moving into AI application development
-
----
-
-## 🔗 GitHub Repository
-
-https://github.com/anushanarayana95/ai-engineer-journey
-
----
-
-## 🎯 Goal
-
-To become a job-ready AI Engineer by building and deploying real-world AI systems.
