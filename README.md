@@ -1,21 +1,21 @@
 # Hi, I'm Anusha 👋
 
-I believe in **learning by building and documenting my journey in public.**
+I'm an aspiring **Data Analyst** building practical skills in **Python, SQL, Excel, Pandas, and data visualization**, while continuing my journey toward **AI Engineering**.
 
-I am currently developing practical skills in **Data Analytics and AI Engineering**, with a focus on turning data into useful insights and building real-world applications.
+I believe in **learning by building and documenting my journey in public**.
 
-### 📊 Data Analytics
+## 📊 Data Analytics
 
 * Python
-* Pandas
 * SQL
+* Pandas
 * Excel
 * Data Cleaning
-* Data Analysis
+* Exploratory Data Analysis
 * Data Visualization
-* Power BI
+* Power BI — currently learning
 
-### 🤖 AI & Backend
+## 🤖 AI & Backend
 
 * Python
 * FastAPI
@@ -24,24 +24,36 @@ I am currently developing practical skills in **Data Analytics and AI Engineerin
 * AI APIs
 * Generative AI fundamentals
 
-### 🛠️ What I'm Building
+## 🚀 Projects
 
-I learn through hands-on projects involving:
+### Data Analysis with Python & Pandas
 
-**Data → Cleaning → Analysis → Visualization → Insights**
+Hands-on data cleaning, analysis, and visualization projects using Python and Pandas.
 
-and
+### SQL Data Analysis
 
-**Python → APIs → Databases → AI Applications**
+Practical SQL work covering filtering, joins, aggregate functions, grouping, and business-focused analysis.
 
-My projects and learning progress are documented here as I continue building my skills.
+### News Database API
 
-### 🎯 Career Goal
+A practical backend application built with **FastAPI, SQLite, REST APIs, and AI integration**, including news retrieval, filtering, pagination, sorting, and analytics.
 
-I am currently focused on starting my career as a **Data Analyst**, while continuing to develop toward **AI Engineering**.
+## 🛠️ Current Focus
 
-I am particularly interested in opportunities where I can work with data, Python, SQL, analytics, automation, and eventually AI-powered applications.
+I'm currently strengthening my skills in:
 
-📌 **GitHub:** Building in public and continuously improving
-📌 **LinkedIn:** Connecting with people in data analytics, technology, and AI
+**Excel → SQL → Python/Pandas → Power BI → Data Analytics**
 
+while continuing to build practical AI and backend applications.
+
+## 🎯 Career Goal
+
+My immediate goal is to start my career in **Data Analytics**, where I can work with data, solve business problems, and build practical analytical solutions.
+
+I'm also continuing to develop toward **AI Engineering** by building applications involving APIs, databases, automation, and AI models.
+
+---
+
+📌 **Learning by building.**
+📌 **Documenting my progress publicly.**
+📌 **Continuously improving through practical projects.**
