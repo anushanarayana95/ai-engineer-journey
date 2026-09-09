@@ -1,24 +1,22 @@
 # Employee Analytics Dashboard
 
-## Project Overview
+## 📊 Project Overview
 
-This project analyzes employee salary data using Python and Pandas.
+This project analyzes employee salary data using **Python and Pandas** to identify salary patterns, employee distribution, and city-level differences.
 
-The goal is to extract useful business insights from employee records, including salary statistics, city-wise analysis, and employee distribution.
-
----
+The goal is to transform raw employee data into clear **business insights and visual reports**.
 
 ## Dataset
 
-The dataset contains the following fields:
+The dataset contains employee information with the following fields:
 
-| Column | Description       |
-| ------ | ----------------- |
-| name   | Employee Name     |
-| city   | Employee Location |
-| salary | Employee Salary   |
+| Column   | Description       |
+| -------- | ----------------- |
+| `name`   | Employee Name     |
+| `city`   | Employee Location |
+| `salary` | Employee Salary   |
 
-Sample Data:
+### Sample Data
 
 ```text
 name,city,salary
@@ -30,9 +28,7 @@ Vishnu,Mumbai,50000
 Ayra,Banglore,30000
 ```
 
----
-
-## Technologies Used
+## 🛠️ Technologies Used
 
 * Python
 * Pandas
@@ -40,126 +36,69 @@ Ayra,Banglore,30000
 * Git
 * GitHub
 
----
+## 🔍 Analysis Performed
 
-## Analysis Performed
+### 1. Dataset Inspection
 
-### Dataset Inspection
-
-* Loaded CSV data
-* Verified data types
+* Loaded employee data from CSV
 * Checked row and column counts
+* Verified data types
 
-### Salary Analysis
+### 2. Salary Analysis
 
-* Highest salary
-* Lowest salary
-* Average salary
-* Top-paid employees
+* Calculated highest salary
+* Calculated lowest salary
+* Calculated average salary
+* Identified top-paid employees
 
-### City Analysis
+### 3. City Analysis
 
-* Average salary by city
-* Employee count by city
-* Highest salary by city
+* Calculated average salary by city
+* Counted employees by city
+* Identified the city with the highest average salary
 
-### Data Cleaning
+### 4. Data Cleaning
 
-* Removed unwanted spaces using:
+Removed unwanted spaces from city names using Pandas:
 
 ```python
 df["city"] = df["city"].str.strip()
 ```
 
----
+## 📈 Key Results
 
-## Key Results
+| Metric                           |    Result |
+| -------------------------------- | --------: |
+| Employee Count                   |         6 |
+| Highest Salary                   |    50,000 |
+| Lowest Salary                    |    30,000 |
+| Average Salary                   | 38,333.33 |
+| City With Highest Average Salary |    Mumbai |
+| Average Salary — Mumbai          |    42,500 |
+| Top-Paid Employee                |    Vishnu |
+| Top-Paid Employee Salary         |    50,000 |
 
-### Employee Count
+## 📊 Visualizations
 
-```text
-6
-```
+### Average Salary by City
 
-### Highest Salary
+Shows how average salary varies across employee locations.
 
-```text
-50000
-```
+`charts/salary_by_city.png`
 
-### Lowest Salary
+### Employee Count by City
 
-```text
-30000
-```
+Shows employee distribution across cities.
 
-### Average Salary
+`charts/employees_by_city.png`
 
-```text
-38333.33
-```
+### Salary Distribution
 
-### City With Highest Average Salary
+Shows how employee salaries are distributed.
 
-```text
-Mumbai
-```
+`charts/salary_distribution.png`
 
-Average Salary:
-
-```text
-42500
-```
-
-### Top Paid Employee
-
-```text
-Vishnu
-```
-
-Salary:
-
-```text
-50000
-```
-
----
-
-## Charts Generated
-
-### 1. Average Salary By City
-
-Shows how salaries vary across cities.
-
-File:
-
-```text
-charts/salary_by_city.png
-```
-
-### 2. Employee Count By City
-
-Shows employee distribution.
-
-File:
-
-```text
-charts/employees_by_city.png
-```
-
-### 3. Salary Distribution
-
-Shows how salaries are spread across employees.
-
-File:
-
-```text
-charts/salary_distribution.png
-```
-
----
-
-## Project Structure
+## 📁 Project Structure
 
 ```text
 employee_analytics_dashboard/
@@ -175,43 +114,36 @@ employee_analytics_dashboard/
     └── salary_distribution.png
 ```
 
----
+## 💡 Skills Demonstrated
 
-## Skills Demonstrated
+* CSV data handling
+* Data cleaning
+* Exploratory data analysis
+* Pandas `groupby()` operations
+* Aggregation functions
+* Salary analysis
+* Data visualization
+* Reporting and communicating insights
+* Git and GitHub workflow
 
-* CSV Handling
-* Data Cleaning
-* Data Analysis
-* GroupBy Operations
-* Aggregation Functions
-* Data Visualization
-* Reporting Insights
-* Git & GitHub Workflow
+## 🎯 Key Learning
 
----
+This project helped me practice the complete basic analytics workflow:
 
-## Lessons Learned
+**Raw Data → Cleaning → Analysis → Visualization → Business Insights**
 
-* Importance of cleaning data before analysis.
-* How to summarize business data using Pandas.
-* How to calculate salary statistics.
-* How to use GroupBy effectively.
-* How to create visual reports using Matplotlib.
+It also strengthened my understanding of Pandas, grouping and aggregation, and presenting analytical results clearly.
 
----
+## 🚀 Future Improvements
 
-## Future Improvements
+* Add employee departments
+* Add employee experience levels
+* Build an interactive dashboard using Power BI or Streamlit
+* Connect the analysis to a SQL database
+* Create automated reports
 
-* Add employee departments.
-* Add employee experience levels.
-* Build interactive dashboards using Streamlit.
-* Connect to SQL databases.
-* Create automated reports.
+## 👩‍💻 Author
 
----
+**Anusha Narayana**
 
-## Author
-
-Anusha Narayana
-
-AI Engineer Journey Repository
+Building practical skills in **Data Analytics, Python, SQL, and AI Engineering**.
