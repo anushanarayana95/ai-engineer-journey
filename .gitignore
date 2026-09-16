@@ -8,5 +8,4 @@ venv/
 __pycache__/
 news.db
 data/
-data/
-data/
+*.db
